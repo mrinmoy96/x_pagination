@@ -52,17 +52,29 @@ const App = () => {
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
     const currentData = data.slice(indexOfFirstRow, indexOfLastRow);
 
-    const nextPage = () => {
-        if (currentPage < Math.ceil(data.length / rowsPerPage)) {
-            setCurrentPage(currentPage + 1);
-        }
-    };
+    // const nextPage = () => {
+    //     if (currentPage < Math.ceil(data.length / rowsPerPage)) {
+    //         setCurrentPage(currentPage + 1);
+    //     }
+    // };
 
-    const prevPage = () => {
-        if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
-        }
-    };
+    // const prevPage = () => {
+    //     if (currentPage > 1) {
+    //         setCurrentPage(currentPage - 1);
+    //     }
+    // };
+
+    const nextPage = () => {
+      setCurrentPage((prev) => {
+          const totalPages = Math.ceil(data.length / rowsPerPage);
+          return prev < totalPages ? prev + 1 : prev;
+      });
+  };
+  
+  const prevPage = () => {
+      setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
+  };
+  
 
     return (
         <div style={{ textAlign: "center", padding: "20px" }}>

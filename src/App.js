@@ -1,31 +1,5 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
 import React, { useEffect, useState } from "react";
+
 
 const App = () => {
     const [data, setData] = useState([]);
@@ -104,8 +78,12 @@ const App = () => {
                     Previous
                 </button>
                 <span style={{ margin: "0px 20px", padding:"5px 5px", backgroundColor: "green", color: "white"  }}>{currentPage}</span>
-                <button onClick={nextPage} disabled={currentPage === Math.ceil(data.length / rowsPerPage)}  style={{backgroundColor: "green", color: "white" }}>
-                    Next
+                <button 
+                  onClick={nextPage} 
+                  disabled={currentPage >= Math.ceil(data.length / rowsPerPage)}  
+                  style={{ backgroundColor: "green", color: "white" }}
+                >
+                Next
                 </button>
             </div>
         </div>
